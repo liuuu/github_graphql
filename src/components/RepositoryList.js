@@ -13,19 +13,25 @@ import {
   Label,
 } from 'semantic-ui-react';
 import logo from '../logo.svg';
+
+import { observer, inject } from 'mobx-react';
+
+@inject(['listStore'])
+@observer
 class RepositoryList extends Component {
   render() {
-    if (this.props.namedQueryList.loading) {
+    if (this.props.listStore.loading) {
       return (
         <Loader active size="large">
           Loading
         </Loader>
       );
     }
-    console.log(this.props.namedQueryList.search.nodes);
+    console.log(this.props.listStore.nodes);
+
     return (
       <List celled>
-        {this.props.namedQueryList.search.nodes.map(data => {
+        {this.props.listStore.nodes.map(data => {
           return (
             <ListItemsWithData
               key={data.id}
@@ -57,12 +63,14 @@ const ListItemsWithData = ({
 
   return (
     <List.Item>
-      <Image src={avatarUrl} size="tiny" />
-      <List.Content>
+      <List.Content floated="left">
+        <Image src={avatarUrl} size="tiny" />
+      </List.Content>
+      <List.Content floated="left">
         <List.Header as="a" href={url}>
           {nameWithOwner}
         </List.Header>
-        <List.Description as="p">{description}</List.Description>
+        <List.Description as="span">{description}</List.Description>
       </List.Content>
       <StarGroup sCounts={sCounts} forkCounts={forkCounts} watcherCounts={watcherCounts} />
     </List.Item>
@@ -125,17 +133,4 @@ const QUERY_LIST = gql`
   }
 `;
 
-export default graphql(QUERY_LIST, {
-  name: 'namedQueryList',
-  options: ownProps => {
-    return {
-      fetchPolicy: 'network-only',
-      variables: {
-        first: 10,
-        query: 'javascript react',
-        type: 'REPOSITORY',
-      },
-    };
-  },
-})(RepositoryList);
-// export default RepositoryList;
+export default RepositoryList;

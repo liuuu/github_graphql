@@ -4,6 +4,8 @@ import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
 import Test from './components/Test';
+import listStore from './components/testStore';
+import { Provider } from 'mobx-react';
 
 class App extends Component {
   render() {
