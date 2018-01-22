@@ -74,7 +74,7 @@ export const client = new ApolloClient({
 
 console.log(client);
 class ListStore {
-  @observable searchItem = 'wef';
+  @observable searchItem = 'javascript react';
   @observable nodes = [];
   @observable loading = false;
 
@@ -96,7 +96,7 @@ class ListStore {
       fetchPolicy: 'network-only',
       variables: {
         first: 10,
-        query: searchItem,
+        query: searchItem + 'sort:stars-desc',
         type: 'REPOSITORY',
       },
     });

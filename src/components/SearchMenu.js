@@ -6,6 +6,9 @@ import { observable, computed, action } from 'mobx';
 @inject(['listStore'])
 @observer
 class SearchMenu extends Component {
+  componentDidMount() {
+    this.props.listStore.queryNodes(this.props.listStore.searchItem);
+  }
   @action
   handleSearch = e => {
     // console.log('e.target.value', e.target.value);

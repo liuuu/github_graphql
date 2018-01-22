@@ -14,6 +14,7 @@ import {
   Input,
   Tab,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import SearchMenu from './SearchMenu';
 
 export default class CustomNav extends Component {
@@ -29,10 +30,14 @@ export default class CustomNav extends Component {
             <Menu.Menu position="right">
               <SearchMenu />
               <Menu.Item>
-                <Button as="a">Log in</Button>
+                <Link to="/register">
+                  <Button as="a">Log in</Button>
+                </Link>
               </Menu.Item>
               <Menu.Item>
-                <Button as="a">Sign Up</Button>
+                <Link to="/register">
+                  <Button as="a">Sign Up</Button>
+                </Link>
               </Menu.Item>
             </Menu.Menu>
           </Menu>

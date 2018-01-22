@@ -14,6 +14,7 @@ import {
   Input,
   Tab,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import RepositoryList from './RepositoryList';
 import CustomNav from './CustomNav';
 
@@ -32,10 +33,14 @@ const FixedMenu = () => (
           <Input icon="search" placeholder="Search..." />
         </Menu.Item>
         <Menu.Item>
-          <Button as="a">Log in</Button>
+          <Link to="/login">
+            <Button as="a">Log in</Button>
+          </Link>
         </Menu.Item>
         <Menu.Item>
-          <Button as="a">Sign Up</Button>
+          <Link to="/login">
+            <Button as="a">Sign Up</Button>
+          </Link>
         </Menu.Item>
       </Menu.Menu>
     </Container>
